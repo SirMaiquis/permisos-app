@@ -1,25 +1,34 @@
-import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
-import HomeView from "../views/HomeView.vue";
+import { createRouter, createWebHistory } from "vue-router";
+import AddPermissionView from "@/views/AddPermissionView.vue";
+import PermissionsView from "@/views/PermissionsView.vue";
+import EditPermissionView from "@/views/EditPermissionView.vue";
 
-const routes: Array<RouteRecordRaw> = [
+const routes = [
   {
     path: "/",
     name: "home",
-    component: HomeView,
+    component: PermissionsView,
   },
   {
-    path: "/about",
-    name: "about",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
+    path: "/permissions",
+    name: "permissions",
+    component: PermissionsView,
+  },
+  {
+    path: "/permissions/add",
+    name: "add-permission",
+    component: AddPermissionView,
+  },
+  {
+    path: "/permissions/edit/:id",
+    name: "edit-permission",
+    component: EditPermissionView,
+    props: true,
   },
 ];
 
 const router = createRouter({
-  history: createWebHashHistory(),
+  history: createWebHistory(),
   routes,
 });
 
